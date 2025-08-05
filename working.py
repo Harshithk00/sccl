@@ -111,7 +111,7 @@ class GeMBidScraper:
                 "payload": json.dumps({
                     "page": page,
                     "param": {
-                        "searchBid": "",
+                        "searchBid":"",
                         "searchType": "fullText"
                     },
                     "filter": {
@@ -970,7 +970,7 @@ class GeMBidScraper:
                 
         except Exception as e:
             print(f"Error getting database stats: {e}")
-
+            
 def main():
     """Main function to run the scraper"""
     print("=== GeM Bid Scraper with PostgreSQL Storage (Minimal JSON) ===")
