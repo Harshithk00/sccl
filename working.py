@@ -81,7 +81,7 @@ class GeMBidScraper:
         except Exception as e:
             print(f"Database setup error: {e}")
     
-    def fetch_all_bids_paginated(self, start_page: int = 1, end_page: int = 1000):
+    def fetch_all_bids_paginated(self, start_page: int(os.getenv('START_PAGE')), end_page: int = int(os.getenv('END_PAGE'))): # type: ignore
         """
         Fetch all bids data from the API with pagination
         """
@@ -705,7 +705,7 @@ class GeMBidScraper:
             print(f"  ✗ Database error for {bid_info.get('b_bid_number', 'Unknown')} (ID: {bid_info.get('id', 'Unknown')}): {e}")
             return False
     
-    def process_all_bids(self, start_page: int = 1, end_page: int = 1000):
+    def process_all_bids(self, start_page: int = int(os.getenv('START_PAGE')), end_page: int = int(os.getenv('END_PAGE'))): # type: ignore
         """
         Main processing function with enhanced evaluation extraction and database storage
         """
@@ -992,8 +992,8 @@ def main():
     
     # Ask user for page range (optional customization)
     try:
-        start_page = int(input("Enter start page (default: 1): ") or "1")
-        end_page = int(input("Enter end page (default: 1000): ") or "1000")
+        start_page = int(os.getenv('START_PAGE')) # type: ignore
+        end_page = int(os.getenv('END_PAGE')) # type: ignore
     except ValueError:
         print("Invalid input, using default values: pages 1-1000")
         start_page, end_page = 1, 1000
