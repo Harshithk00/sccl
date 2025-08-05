@@ -1,0 +1,13 @@
+playwright
+requests
+bs4
+pandas
+asyncpg
+flask
+aiohttp
+psycopg2
+dotenv
+# json
+# urllib.parse
+# re
+
